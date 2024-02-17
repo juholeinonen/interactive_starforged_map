@@ -1,25 +1,26 @@
 [
-    {
-      "name": "Sector 1",
-      "region": "Outlands",
-      "settlements": ["Janus", "Spiro"],
-      "passages": [
-        {
-          "name": "Passage Out",
-          "leadsTo": "Sector 2"
-        }
-      ]
-    },
-    {
-      "name": "Sector 2",
-      "region": "Core Worlds",
-      "settlements": ["Nova", "Terra"],
-      "passages": [
-        {
-          "name": "Passage In",
-          "leadsTo": "Sector 1"
-        }
-      ]
-    }
-  ]
-  
+  {
+    "name": "Sector 1",
+    "region": "Outlands",
+    "location": {"x": 100, "y": 150},
+    "settlements": ["Janus", "Spiro"],
+    "passages": [
+      {
+        "name": "Passage Out",
+        "leadsTo": "Sector 2"
+      }
+    ]
+  },
+  {
+    "name": "Sector 2",
+    "region": "Core Worlds",
+    "location": {"x": 300, "y": 250},
+    "settlements": ["Nova", "Terra"],
+    "passages": [
+      {
+        "name": "Passage In",
+        "leadsTo": "Sector 1"
+      }
+    ]
+  }
+]

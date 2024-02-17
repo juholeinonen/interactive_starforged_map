@@ -2,12 +2,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fetch sector data from JSON
     fetch('sectors.json')
         .then(response => response.json())
-        .then(data => {
-            // Assuming the first sector for demonstration
-            const sector = data[0]; // You might want to select this based on user action or another identifier
+        .then(sectors => {
+            const map = document.querySelector('body'); // Assuming you want to place the sectors within the body for now
 
-            var squares = document.querySelectorAll('.clickableSquare');
-            squares.forEach(function(square) {
+            sectors.forEach(sector => {
+                // Create a clickable square for each sector
+                const square = document.createElement('div');
+                square.classList.add('clickableSquare');
+                square.style.left = `${sector.location.x}px`;
+                square.style.top = `${sector.location.y}px`;
+                map.appendChild(square);
+
+                // Set up the click event for each square
                 square.onclick = function() {
                     // Set modal content based on sector data
                     var modalContent = document.querySelector('.modal-content');

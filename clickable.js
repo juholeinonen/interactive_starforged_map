@@ -1,4 +1,34 @@
+function createStars(numberOfStars) {
+    const map = document.querySelector('body');
+    for (let i = 0; i < numberOfStars; i++) {
+        const star = document.createElement('div');
+        const starType = Math.floor(Math.random() * 3); // Random number between 0 and 3
+
+        star.className = 'star';
+        switch (starType) {
+            case 0: // Square
+                star.classList.add('square');
+                break;
+            case 1: // Horizontal rectangle
+                star.classList.add('horizontal-rectangle');
+                break;
+            case 2: // Vertical rectangle
+                star.classList.add('vertical-rectangle');
+                break;
+        }
+
+        const xPos = Math.floor(Math.random() * window.innerWidth);
+        const yPos = Math.floor(Math.random() * window.innerHeight);
+
+        star.style.left = `${xPos}px`;
+        star.style.top = `${yPos}px`;
+        map.appendChild(star);
+    }
+}
+
+
 document.addEventListener('DOMContentLoaded', function() {
+    createStars(300); // Create 100 stars
     // Fetch sector data from JSON
     fetch('sectors.json')
         .then(response => response.json())

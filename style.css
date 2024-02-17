@@ -36,6 +36,32 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+.star {
+    position: absolute;
+    background-color: #000000; /* Black color for the star */
+    box-shadow: 0 0 6px #808080; /* Grey glow around the star */
+}
+
+/* Shapes for stars */
+.star.square {
+    width: 2px;
+    height: 2px;
+}
+
+.star.horizontal-rectangle {
+    width: 3px;
+    height: 1px;
+}
+
+.star.vertical-rectangle {
+    width: 1px;
+    height: 3px;
+}
+/* Optionally, if you want a more pronounced glow for specific shapes */
+.star.square, .star.horizontal-rectangle, .star.vertical-rectangle {
+    box-shadow: 0 0 6px #808080; /* Adjust the blur radius to increase the glow */
+}
+
 p {
     font-size: 10px;
 }

@@ -2,55 +2,12 @@
 <html>
 <head>
     <title>Retro Game Map</title>
-    <style>
-        body {
-            background-color: #9bbc0f; /* Gameboy background color */
-            font-family: 'Press Start 2P', cursive; /* Retro, pixelated font */
-            color: #306230; /* Gameboy text color */
-        }
-        #clickableSquare {
-            width: 100px;
-            height: 100px;
-            background-color: #8bac0f; /* Slightly darker shade for the square */
-            cursor: pointer;
-            border: 2px solid #306230; /* Gameboy-like border */
-            box-sizing: border-box;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            background-color: #9bbc0f;
-            border: 4px solid #306230;
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .close {
-            color: #306230;
-            float: right;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        p {
-            font-size: 10px; /* Smaller text to mimic Gameboy style */
-        }
-    </style>
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
-<div id="clickableSquare"></div>
+<div class="clickableSquare" data-x="20" data-y="20"></div>
 
 <div id="myModal" class="modal">
     <div class="modal-content">

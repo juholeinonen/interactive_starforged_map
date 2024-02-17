@@ -1,0 +1,25 @@
+[
+    {
+      "name": "Sector 1",
+      "region": "Outlands",
+      "settlements": ["Janus", "Spiro"],
+      "passages": [
+        {
+          "name": "Passage Out",
+          "leadsTo": "Sector 2"
+        }
+      ]
+    },
+    {
+      "name": "Sector 2",
+      "region": "Core Worlds",
+      "settlements": ["Nova", "Terra"],
+      "passages": [
+        {
+          "name": "Passage In",
+          "leadsTo": "Sector 1"
+        }
+      ]
+    }
+  ]
+  

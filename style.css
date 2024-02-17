@@ -65,3 +65,22 @@ body {
 p {
     font-size: 10px;
 }
+
+html, body {
+    height: 100%;
+    margin: 0; /* Reset default margin */
+    padding: 0; /* Reset default padding */
+}
+
+#map-container {
+    position: relative;
+    width: 100%;
+    height: 100%; /* Now it should work */
+    background-color: #f0f0f0; /* Existing background color */
+}
+
+.rectangle {
+    position: absolute;
+    border: 1px dashed #000;
+    background-color: rgba(0, 0, 0, 0.2);
+}

@@ -29,6 +29,45 @@ function createStars(numberOfStars) {
 
 document.addEventListener('DOMContentLoaded', function() {
     createStars(300); // Create 100 stars
+    
+    const mapContainer = document.getElementById('map-container');
+    let isDrawing = false;
+    let rect = {};
+    let rectangles = []; // This will store your rectangles
+
+    mapContainer.addEventListener('mousedown', function(e) {
+        isDrawing = true;
+        rect.startX = e.clientX - mapContainer.offsetLeft;
+        rect.startY = e.clientY - mapContainer.offsetTop;
+        rect.el = document.createElement('div');
+        rect.el.className = 'rectangle';
+        mapContainer.appendChild(rect.el);
+    });
+
+    mapContainer.addEventListener('mousemove', function(e) {
+        if (!isDrawing) return;
+        const x = e.clientX - mapContainer.offsetLeft;
+        const y = e.clientY - mapContainer.offsetTop;
+        const width = Math.abs(x - rect.startX);
+        const height = Math.abs(y - rect.startY);
+        const left = (x < rect.startX) ? x : rect.startX;
+        const top = (y < rect.startY) ? y : rect.startY;
+        
+        rect.el.style.left = left + 'px';
+        rect.el.style.top = top + 'px';
+        rect.el.style.width = width + 'px';
+        rect.el.style.height = height + 'px';
+    });
+
+    mapContainer.addEventListener('mouseup', function(e) {
+        if (!isDrawing) return;
+        isDrawing = false;
+        // Here you could add the rectangle to your JSON structure
+        rectangles.push(rect);
+        // Reset the rect object for the next rectangle
+        rect = {};
+    });
+
     // Fetch sector data from JSON
     fetch('sectors.json')
         .then(response => response.json())

@@ -107,7 +107,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     createSectorModal.querySelector('.close').addEventListener('click', function() {
         createSectorModal.style.display = 'none';
-        // You can also clear any rectangles drawn on the map that haven't been saved
+        // Remove the rectangle from the map if it exists and hasn't been saved
+        if (createSectorForm.rectData && createSectorForm.rectData.el) {
+            createSectorForm.rectData.el.remove();
+        }
+        createSectorForm.rectData = null; // Clear the reference to the rectangle data
     });
 
 

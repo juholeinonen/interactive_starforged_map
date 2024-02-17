@@ -29,7 +29,7 @@ function createStars(numberOfStars) {
 
 document.addEventListener('DOMContentLoaded', function() {
     createStars(300); // Create 100 stars
-    
+
     const mapContainer = document.getElementById('map-container');
     let isDrawing = false;
     let rect = {};
@@ -62,11 +62,54 @@ document.addEventListener('DOMContentLoaded', function() {
     mapContainer.addEventListener('mouseup', function(e) {
         if (!isDrawing) return;
         isDrawing = false;
-        // Here you could add the rectangle to your JSON structure
-        rectangles.push(rect);
+    
+        // Show the createSectorModal
+        document.getElementById('createSectorModal').style.display = 'block';
+    
+        // Attach the rectangle data to the form for reference
+        const form = document.getElementById('createSectorForm');
+        form.rectData = rect;
+    
         // Reset the rect object for the next rectangle
         rect = {};
     });
+
+    const createSectorModal = document.getElementById('createSectorModal');
+    const createSectorForm = document.getElementById('createSectorForm');
+    
+    createSectorForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+    
+        // Create a new sector object
+        const newSector = {
+            name: createSectorForm.sectorName.value,
+            region: createSectorForm.sectorRegion.value,
+            location: {
+                x: createSectorForm.rectData.startX,
+                y: createSectorForm.rectData.startY,
+                width: createSectorForm.rectData.el.style.width,
+                height: createSectorForm.rectData.el.style.height
+            }
+            // Add additional sector data from the form as needed
+        };
+    
+        // Add the new sector to your JSON structure (you'll need to handle this)
+        // For now, we'll just log it to the console
+        console.log(newSector);
+    
+        // Close the modal
+        createSectorModal.style.display = 'none';
+    
+        // Reset the form for the next input
+        createSectorForm.reset();
+    });
+
+
+    createSectorModal.querySelector('.close').addEventListener('click', function() {
+        createSectorModal.style.display = 'none';
+        // You can also clear any rectangles drawn on the map that haven't been saved
+    });
+
 
     // Fetch sector data from JSON
     fetch('sectors.json')
